@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "UploadFile";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h3> Imagem de perfil <i class="fa fa-camera-retro fa-lg pull-right"></i> </h3>
+<hr />
+<ul class="nav nav-pills">
+    <li role="presentation">@Html.ActionLink("Perfil", "Perfil", "Users", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+    <li role="presentation">@Html.ActionLink("Editar perfil", "EditPerfil", "Users", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+    <li role="presentation" class="active">@Html.ActionLink("Imagem de perfil", "UploadFile", "Images", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+</ul>
+<hr />
+<div class="table-responsive">
+    <table>
+        <tr>
+            <td>Alterar foto de perfil</td>
+        </tr>
+        <tr height="7px">
+            <td></td>
+        </tr>
+        @using (Html.BeginForm("UploadFile", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <tr>
+                <td>@Html.TextBox("file", "", new { type = "file" })</td>
+            </tr>
+            <tr height="7px">
+                <td></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Upload" class="btn btn-default" /></td>
+            </tr>
+            <tr height="7px">
+                <td></td>
+            </tr>
+            <tr>
+                <td>@ViewBag.uploadFile</td>
+            </tr>
+        }
+        <tr height="10px">
+            <td></td>
+        </tr>
+        <tr>
+            <td>Deletar foto de perfil</td>
+        </tr>
+        <tr height="7px">
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Html.ActionLink("Deletar", "DeleteProfilePhoto", "Images", new { area = "" }, new { @class = "btn btn-default" })</td>
+        </tr>
+       
+    </table>
+</div>
+
+
+
+
+

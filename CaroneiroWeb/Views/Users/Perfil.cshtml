@@ -1,0 +1,135 @@
+﻿@model CaroneiroWeb.Models.Users
+
+@{
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+
+<h3>Perfil <i class="fa fa-user pull-right"></i></h3>
+<hr />
+<ul class="nav nav-pills">
+    <li role="presentation" class="active" >@Html.ActionLink("Perfil", "Perfil", "Users", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+    <li role="presentation">@Html.ActionLink("Editar perfil", "EditPerfil", "Users", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+    <li role="presentation">@Html.ActionLink("Imagem de perfil", "UploadFile", "Images", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+</ul>
+<hr />
+
+<h4><span class="label label-primary">Geral</span></h4>
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.name_user)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.name_user)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.genre)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.genre)
+    </dd>
+
+    <dt>
+        <text>Idade </text>
+    </dt>
+
+    <dd>
+        @ViewBag.date anos
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.state)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.state)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.city)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.city)
+    </dd>
+</dl>
+
+
+<h4><span class="label label-primary">Informação de contato</span></h4>
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.email)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.email)<br />
+        <h6 class="text-danger">Essa informação não é visível aos demais usuários.</h6>
+
+    </dd>
+</dl>
+
+
+<h4><span class="label label-primary">Detalhes</span></h4>
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.religion)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.religion)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.relationship)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.relationship)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.schooling)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.schooling)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.profession)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.profession)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.pref_music)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.pref_music)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.emotional)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.emotional)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.description)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.description)
+    </dd>
+</dl>
+
+
+

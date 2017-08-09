@@ -1,0 +1,335 @@
+﻿@model IEnumerable<CaroneiroWeb.Models.Advertisement>
+@using CaroneiroWeb.Models;
+
+@{
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+
+    string dateString = "2000/01/01";
+    DateTime date1 = DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture);
+
+    int idUser = ViewBag.idUser;
+
+}
+@if (ViewBag.type == "Ofertas de Carona")
+{
+    <h3>@ViewBag.type</h3>
+    <ul class="nav nav-pills ">
+        <li class="active">@Html.ActionLink("Ofertas de carona", "ListAdTimeLineType", "Advertisement", new { type = "Oferta Carona" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por carona", "ListAdTimeLineType", "Advertisement", new { type = "Procura Carona" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Ofertas de hospedagem", "ListAdTimeLineType", "Advertisement", new { type = "Oferta Hospedagem" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por hospedagem", "ListAdTimeLineType", "Advertisement", new { type = "Procura Hospedagem" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por companhia", "ListAdTimeLineType", "Advertisement", new { type = "Procura Companhia" }, new { @class = "btn btn-default btn-xs" })</li>
+    </ul>
+    <hr />
+    @Html.Partial("OfferRideSearch", new RideSearch());
+}
+@if (ViewBag.type == "Buscas por Carona")
+{
+    <h3>@ViewBag.type</h3>
+    <ul class="nav nav-pills ">
+        <li>@Html.ActionLink("Ofertas de carona", "ListAdTimeLineType", "Advertisement", new { type = "Oferta Carona" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li class="active">@Html.ActionLink("Buscas por carona", "ListAdTimeLineType", "Advertisement", new { type = "Procura Carona" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Ofertas de hospedagem", "ListAdTimeLineType", "Advertisement", new { type = "Oferta Hospedagem" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por hospedagem", "ListAdTimeLineType", "Advertisement", new { type = "Procura Hospedagem" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por companhia", "ListAdTimeLineType", "Advertisement", new { type = "Procura Companhia" }, new { @class = "btn btn-default btn-xs" })</li>
+    </ul>
+    <hr />
+
+    @Html.Partial("RideSearch", new RideSearch());
+}
+@if (ViewBag.type == "Ofertas de Hospedagem")
+{
+    <h3>@ViewBag.type</h3>
+    <ul class="nav nav-pills ">
+        <li>@Html.ActionLink("Ofertas de carona", "ListAdTimeLineType", "Advertisement", new { type = "Oferta Carona" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por carona", "ListAdTimeLineType", "Advertisement", new { type = "Procura Carona" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li class="active">@Html.ActionLink("Ofertas de hospedagem", "ListAdTimeLineType", "Advertisement", new { type = "Oferta Hospedagem" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por hospedagem", "ListAdTimeLineType", "Advertisement", new { type = "Procura Hospedagem" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por companhia", "ListAdTimeLineType", "Advertisement", new { type = "Procura Companhia" }, new { @class = "btn btn-default btn-xs" })</li>
+    </ul>
+    <hr />
+    @Html.Partial("OfferHostingSearch", new HostingSearch());
+}
+@if (ViewBag.type == "Buscas por Hospedagem")
+{
+    <h3>@ViewBag.type</h3>
+    <ul class="nav nav-pills ">
+        <li>@Html.ActionLink("Ofertas de carona", "ListAdTimeLineType", "Advertisement", new { type = "Oferta Carona" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por carona", "ListAdTimeLineType", "Advertisement", new { type = "Procura Carona" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Ofertas de hospedagem", "ListAdTimeLineType", "Advertisement", new { type = "Oferta Hospedagem" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li class="active">@Html.ActionLink("Buscas por hospedagem", "ListAdTimeLineType", "Advertisement", new { type = "Procura Hospedagem" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por companhia", "ListAdTimeLineType", "Advertisement", new { type = "Procura Companhia" }, new { @class = "btn btn-default btn-xs" })</li>
+    </ul>
+    <hr />
+    @Html.Partial("HostingSearch", new HostingSearch());
+}
+@if (ViewBag.type == "Buscas por Companhia")
+{
+    <h3>@ViewBag.type</h3>
+    <ul class="nav nav-pills ">
+        <li>@Html.ActionLink("Ofertas de carona", "ListAdTimeLineType", "Advertisement", new { type = "Oferta Carona" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por carona", "ListAdTimeLineType", "Advertisement", new { type = "Procura Carona" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Ofertas de hospedagem", "ListAdTimeLineType", "Advertisement", new { type = "Oferta Hospedagem" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li>@Html.ActionLink("Buscas por hospedagem", "ListAdTimeLineType", "Advertisement", new { type = "Procura Hospedagem" }, new { @class = "btn btn-default btn-xs" })</li>
+        <li class="active">@Html.ActionLink("Buscas por companhia", "ListAdTimeLineType", "Advertisement", new { type = "Procura Companhia" }, new { @class = "btn btn-default btn-xs" })</li>
+    </ul>
+    <hr />
+    @Html.Partial("CompanySearch", new HostingSearch());
+}
+<hr />
+<div class="col-xs-12 col-sm-9 col-md-9">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+
+            <div class="table-responsive">
+                <table>
+                    <tr>
+                        <td width="45"><img src="@item.User.image" width="40" height="40"></td>
+                        @if (item.id_owner_ad == idUser)
+                        {
+                            <td><h6 class="text-info"> Anúncio criado por @item.User.name_user em @item.date_creation.ToString("dd/MM/yyyy")  </h6></td>
+
+                        }
+                        @if (item.id_owner_ad != idUser)
+                        {
+                            <td><h6 class="text-info"> Anúncio criado por @Html.ActionLink(item.User.name_user, "ListAdsFriends", "People", new { id = item.id_owner_ad }, null) em @item.date_creation.ToString("dd/MM/yyyy")  </h6></td>
+                        }
+                    </tr>
+                </table>
+            </div>
+
+            <div class="panel-body">
+                <table>
+                    <tr><td><i class="fa fa-star"></i></td><td width="10px"></td><td><h4>@Html.DisplayFor(modelItem => item.title)</h4></td></tr>
+                    <tr>
+                        @if ((item.type_ad == "Procura Hospedagem") || (item.type_ad == "Oferta Hospedagem"))
+                {
+                            <td><i class="fa fa-home"></i> </td>
+                            <td width="10px"></td>
+                            <td>@Html.DisplayFor(modelItem => item.type_ad)</td>
+                        }
+                        @if ((item.type_ad == "Procura Carona") || (item.type_ad == "Oferta Carona"))
+                {
+                            <td><i class="fa fa-thumbs-o-up"></i></td>
+                            <td width="10px"></td>
+                            <td>@Html.DisplayFor(modelItem => item.type_ad)</td>
+                        }
+                        @if (item.type_ad == "Procura Companhia")
+                {
+                            <td><i class="fa fa-users"></i> </td>
+                            <td width="10px"></td>
+                            <td>@Html.DisplayFor(modelItem => item.type_ad)</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-calendar"></i></td>
+                        <td width="10px"></td>
+                        <td>Este anúncio expira em @Html.DisplayFor(modelItem => item.expiration_date)</td>
+                    </tr>
+                    @if (item.departure_date > date1)
+                {
+                        <tr>
+                            <td><i class="fa fa-calendar-o"></i></td>
+                            <td width="10px"></td>
+                            <td>Saída em @Html.DisplayFor(modelItem => item.departure_date)</td>
+                        </tr>
+                    }
+                    @if ((item.exitState != string.Empty) && (item.exitTown != string.Empty))
+                {
+                        <tr>
+                            <td><i class="fa fa-map-marker"></i></td>
+                            <td width="10px"></td>
+                            <td>Saindo de @Html.DisplayFor(modelItem => item.exitState), @Html.DisplayFor(modelItem => item.exitTown)</td>
+                        </tr>
+                    }
+
+                    @if ((item.state != string.Empty) && (item.city != string.Empty))
+                {
+                    if (item.type_ad == "Procura Hospedagem")
+                    {
+                            <tr>
+                                <td><i class="fa fa-map-marker"></i></td>
+                                <td width="10px"></td>
+                                <td> Procuro hospedagem em @Html.DisplayFor(modelItem => item.state), @Html.DisplayFor(modelItem => item.city)</td>
+                            </tr>
+                        }
+                        if (item.type_ad == "Oferta Hospedagem")
+                        {
+                            <tr>
+                                <td><i class="fa fa-map-marker"></i></td>
+                                <td width="10px"></td>
+                                <td> Oferto hospedagem em @Html.DisplayFor(modelItem => item.state), @Html.DisplayFor(modelItem => item.city)</td>
+                            </tr>
+                        }
+                        if ((item.type_ad == "Procura Carona") || (item.type_ad == "Oferta Carona"))
+                        {
+                            <tr>
+                                <td><i class="fa fa-map-marker"></i></td>
+                                <td width="10px"></td>
+                                <td> Indo para @Html.DisplayFor(modelItem => item.state), @Html.DisplayFor(modelItem => item.city)</td>
+                            </tr>
+
+                        }
+                        if (item.type_ad == "Procura Companhia")
+                        {
+                            <tr>
+                                <td><i class="fa fa-map-marker"></i></td>
+                                <td width="10px"></td>
+                                <td>Em @Html.DisplayFor(modelItem => item.state), @Html.DisplayFor(modelItem => item.city)</td>
+                            </tr>
+
+                        }
+                    }
+                    @if ((item.start > date1) && (item.end > date1))
+                {
+                    if (item.type_ad == "Procura Hospedagem")
+                    {
+                            <tr>
+                                <td><i class="fa fa-clock-o"></i></td>
+                                <td width="10px"></td>
+                                <td>Chekin @Html.DisplayFor(modelItem => item.start)  Chekout @Html.DisplayFor(modelItem => item.end)</td>
+                            </tr>
+                        }
+                        if (item.type_ad == "Oferta Hospedagem")
+                        {
+                            <tr>
+                                <td><i class="fa fa-clock-o"></i></td>
+                                <td width="10px"></td>
+                                <td>Disponível de @Html.DisplayFor(modelItem => item.start) até @Html.DisplayFor(modelItem => item.end)</td>
+                            </tr>
+
+                        }
+                        if (item.type_ad == "Procura Companhia")
+                        {
+                            <tr>
+                                <td><i class="fa fa-clock-o"></i></td>
+                                <td width="10px"></td>
+                                <td>De @Html.DisplayFor(modelItem => item.start)  até @Html.DisplayFor(modelItem => item.end)</td>
+                            </tr>
+                        }
+
+                    }
+                    @if (item.accommodation_type != string.Empty)
+                {
+                        <tr>
+                            <td><i class="fa fa-coffee"></i></td>
+                            <td width="10px"></td>
+                            <td>Acomodação @Html.DisplayFor(modelItem => item.accommodation_type) </td>
+                        </tr>
+                    }
+                    @if (item.quantity_people > 0)
+                {
+                    if (item.type_ad == "Procura Hospedagem")
+                    {
+                            <tr>
+                                <td><i class="fa fa-star"></i></td>
+                                <td width="10px"></td>
+                                <td> Hospedagem para @Html.DisplayFor(modelItem => item.quantity_people) pessoas </td>
+                            </tr>
+                        }
+                        if (item.type_ad == "Oferta Hospedagem")
+                        {
+                            <tr>
+                                <td><i class="fa fa-star"></i></td>
+                                <td width="10px"></td>
+                                <td> Vaga para @Html.DisplayFor(modelItem => item.quantity_people) pessoas </td>
+                            </tr>
+                        }
+                        if ((item.type_ad == "Procura Carona") || (item.type_ad == "Oferta Carona"))
+                        {
+                            <tr>
+                                <td><i class="fa fa-star"></i></td>
+                                <td width="10px"></td>
+                                <td>Carona para @Html.DisplayFor(modelItem => item.quantity_people) pessoas </td>
+                            </tr>
+
+                        }
+                    }
+                    @if (item.maximum_people_value > 0)
+                {
+                    if (item.type_ad == "Procura Hospedagem")
+                    {
+                            <tr>
+                                <td><i class="fa fa-money"></i></td>
+                                <td width="10px"></td>
+                                <td>Procuro diária em torno de R$ @Html.DisplayFor(modelItem => item.maximum_people_value) </td>
+                            </tr>
+                        }
+                        if (item.type_ad == "Oferta Hospedagem")
+                        {
+                            <tr>
+                                <td><i class="fa fa-money"></i></td>
+                                <td width="10px"></td>
+                                <td>Ofereço diária em torno de R$ @Html.DisplayFor(modelItem => item.maximum_people_value) </td>
+                            </tr>
+
+                        }
+                    }
+                    @if (item.maximum_route_value > 0)
+                {
+                        <tr>
+                            <td><i class="fa fa-money"></i></td>
+                            <td width="10px"></td>
+                            <td>Contribuição no trajeto de R$ @Html.DisplayFor(modelItem => item.maximum_route_value) </td>
+                        </tr>
+                    }
+                    @if (item.local_exit != string.Empty)
+                {
+                        <tr>
+                            <td><i class="fa fa-location-arrow"></i></td>
+                            <td width="10px"></td>
+                            <td>Local de saída @Html.DisplayFor(modelItem => item.local_exit) </td>
+                        </tr>
+                    }
+                    @if (item.finality != string.Empty)
+                {
+                        <tr>
+                            <td><i class="fa fa-question"></i></td>
+                            <td width="10px"></td>
+                            <td>Finalidade : @Html.DisplayFor(modelItem => item.finality) </td>
+                        </tr>
+                    }
+                    @if (item.description != string.Empty)
+                {
+                        <tr>
+                            <td><i class="fa fa-pencil-square"></i></td>
+                            <td width="10px"></td>
+                            <td>@Html.DisplayFor(modelItem => item.description) </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="panel-footer">
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            @if (item.id_owner_ad == idUser)
+                            {
+                                <td width="9px"></td>
+                                <td><a href="@Url.Action("EditAd", "Advertisement", new { idAd = item.id_advertisement, idOwner = item.id_owner_ad, type = item.type_ad })" class="btn btn-info btn-xs"><i class="fa fa-pencil">  Editar</i></a></td>
+                                if (item.active == 1)
+                                {
+                                    <td width="9px"></td>
+                                    <td><a href="@Url.Action("DisableAdTimeLine", "Advertisement", new { idAd = item.id_advertisement, state = item.User.state })" class="btn btn-warning btn-xs"><i class="fa fa-times">  Desativar anúncio</i></a></td>
+                                }
+                                if (item.active == 0)
+                                {
+                                    <td width="9px"></td>
+                                    <td><a href="@Url.Action("ActivateAd", "Advertisement", new { idAd = item.id_advertisement })" class="btn btn-success btn-xs"><i class="fa fa-check">  Ativar anúncio</i></a></td>
+                                }
+                                <td width="9px"></td>
+                                <td><a href="@Url.Action("SearchSpecificAd", "Users", new { idAd = item.id_advertisement })" class="btn btn-primary btn-xs"><i class="fa fa-eye">  Ver</i></a></td>
+                            }
+                            @if (item.id_owner_ad != idUser)
+                            {
+                                <td width="9px"></td>
+                                <td><a href="@Url.Action("SelectedAd", "People", new { idOwner = item.id_owner_ad, idAd = item.id_advertisement })" class="btn btn-primary btn-xs"><i class="fa fa-eye">  Ver</i></a></td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>

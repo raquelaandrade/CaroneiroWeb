@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CaroneiroWeb.Models.Users>
+
+@{
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+
+}
+
+<h3>Resultado da sua busca</h3>
+<hr />
+<div class="table-responsive">
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th rowspan="2"> <img src="@item.image" width="75" height="75" /></th>
+                <th width="20"></th>
+                <th> <h4> @Html.DisplayFor(model => item.name_user), @Html.DisplayFor(model => item.state), @Html.DisplayFor(model => item.city)</h4> </th>
+            </tr>
+            <tr>
+                <th width="20"></th>
+                <th>@Html.ActionLink("Ver + ", "ListAdsFriends", "People", new { id = @item.id_user }, new { @class = "btn btn-info btn-xs" })</th>
+            </tr>
+            <tr>
+                <td height="10"></td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+

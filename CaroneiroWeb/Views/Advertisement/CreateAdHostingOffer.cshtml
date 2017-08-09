@@ -1,0 +1,138 @@
+﻿@model CaroneiroWeb.Models.Advertisement
+
+@{
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h3>Criar Anúncios<i class="fa fa-star pull-right"></i></h3>
+<hr />
+<ul class="nav nav-pills">
+    <li role="presentation">@Html.ActionLink("Meus anúncios", "MyAds", "Users", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+    <li role="presentation" class="active">@Html.ActionLink("Criar anúncio", "CreateHostingAd", "Advertisement", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+</ul>
+<hr />
+<ul class="nav nav-pills ">
+    <li role="presentation">@Html.ActionLink("Procuro Hospedagem", "CreateHostingAd", "Advertisement", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+    <li role="presentation" class="active">@Html.ActionLink("Ofertar Hospedagem", "CreateAdHostingOffer", "Advertisement", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+    <li role="presentation">@Html.ActionLink("Procuro Carona", "CreateRideAdvertising", "Advertisement", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+    <li role="presentation">@Html.ActionLink("Ofertar Carona", "CreateAdOfferRide", "Advertisement", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+    <li role="presentation">@Html.ActionLink("Procuro Companhia", "CreateCompanyAd", "Advertisement", new { area = "" }, new { @class = "btn btn-default btn-xs" })</li>
+</ul>
+<hr />
+<h6 class="text-info">Todas as informações exceto descrição devem ser preenchidas.</h6>
+<h6 class="text-info">Ao criar seu anúncio ele será visível a todos os usuários. Se quiser deixá-lo visível apenas no seu perfil clique em desativar anúncio.</h6>
+<div class="col-xs-12 col-sm-9 col-md-9">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="center">
+                    @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control", @placeholder = "Dê um título ao seu anúncio de até 50 caracteres" } })
+                    @Html.ValidationMessageFor(model => model.title, "", new { })
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.expiration_date, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.expiration_date, new { htmlAttributes = new { @class = "form-control", style = "width:160px" } })
+                            @ViewBag.erroDateEx
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <h4><span class="label label-primary">Localidade</span></h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.state, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control", style = "width:160px" } })
+                            @Html.ValidationMessageFor(model => model.state, "", new { })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.city, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.city, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.city, "", new { })
+                            @ViewBag.erroLocality
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <h4><span class="label label-primary">Disponibilidade</span></h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.start, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.start, new { htmlAttributes = new { @class = "form-control", style = "width:160px" } })
+                            @ViewBag.erroCheckin
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.end, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.end, new { htmlAttributes = new { @class = "form-control", style = "width:160px" } })
+                            @ViewBag.erroCheckout
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <h4><span class="label label-primary">Detalhes</span></h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.quantity_people, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.quantity_people, new { htmlAttributes = new { @class = "form-control", style = "width:160px" } })
+                            @ViewBag.erroQtdP
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.maximum_people_value, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.maximum_people_value, new { htmlAttributes = new { @class = "form-control", style = "width:160px", @placeholder = "R$" } })
+                            @ViewBag.erroMPV
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.accommodation_type, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.accommodation_type, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.accommodation_type, "", new { })
+                            @ViewBag.erroAT
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.description, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <input type="submit" value="Criar anúncio" class="btn btn-info" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

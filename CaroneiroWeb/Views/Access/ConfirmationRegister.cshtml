@@ -1,0 +1,86 @@
+﻿@model CaroneiroWeb.Models.Users
+<!-- Top Background Image Wrapper -->
+<div class="bgded" style="background-image:url(@Url.Content("~/Design/images/logo.jpg"));">
+    <div class="overlay">
+        <div class="wrapper row0">
+            <div id="topbar" class="clear">
+                <!-- ################################################################################################ -->
+                <div class="fl_right">
+                    <ul class="faico clear">
+                        <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a class="faicon-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                </div>
+                <!-- ################################################################################################ -->
+            </div>
+        </div>
+        <div class="wrapper row1">
+            <header id="header" class="clear">
+                <!-- ################################################################################################ -->
+                <div id="logo" class="fl_left">
+                    <h1>@Html.ActionLink("Caroneiro", "Index", "Home")</h1>
+                </div>
+                <nav id="mainav" class="fl_right">
+                    <ul class="clear">
+                        <li>@Html.ActionLink("Login", "Login", "Access")</li>
+                        <li>@Html.ActionLink("Cadastro", "Register", "Access")</li>
+                    </ul>
+                </nav>
+                <!-- ################################################################################################ -->
+            </header>
+        </div>
+        <div class="container">
+            <div class="form-signin">
+                <h2 style="color:white">Login</h2>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="cols-md-12">
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @placeholder = "email" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { style = "color: white" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="cols-md-12">
+                            @Html.EditorFor(model => model.password_user, new { htmlAttributes = new { @class = "form-control", @placeholder = "senha" } })
+                            @Html.ValidationMessageFor(model => model.password_user, "", new { style = "color: white" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="cols-md-12">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="remember-me"><text style="color:white">Lembrar-me</text>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" form-group">
+                        <div class="cols-md-12">
+                            <h5 style="color:white">@ViewBag.error</h5>
+                            <h5 style="color:white">@ViewBag.success</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="cols-md-12">
+                            <input type="submit" value="Entrar" class="btn btn-lg btn-primary btn-block" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div> <!-- /container -->
+        <br />
+        <br />
+    </div>
+    <!-- End Top Background Image Wrapper -->
+    <div class="wrapper row5">
+        <div id="copyright" class="clear">
+            <!-- ################################################################################################ -->
+            <p class="fl_left">Copyright &copy; 2017 - All Rights Reserved - Caroneiro
+            <p class="fl_right"><a href='@Url.Action("About","Home")'>Sobre - </a><a href='@Url.Action("Contact","Home")'>Contato - </a><a href='@Url.Action("TermsOfUse","Home")'>Termos de Uso</a></p>
+            <!-- ################################################################################################ -->
+        </div>
+    </div>

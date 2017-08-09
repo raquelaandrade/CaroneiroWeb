@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CaroneiroWeb.Models.Interested>
+
+@{
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+<h3> Solicitações de participação <i class="fa fa-check pull-right"></i></h3>
+<hr />
+<div class="col-xs-12 col-sm-9 col-md-9">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+            <div class="table-responsive">
+                <table>
+                    <tr>
+                        <td width="45"><img src=@item.User.image width="40" height="40"></td>
+                        <td><h6 class="text-info">Solicitação enviada por @Html.ActionLink(item.User.name_user, "FriendPerfil", "People", new { id = item.id_user }, null) em @item.date_interested.ToString("dd/MM/yyyy HH:mm") </h6></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="panel-body">
+                <text> Este usuário deseja participar do anúncio @item.title</text>
+                <br />
+                <br />
+            </div>
+            <div class="panel-footer">
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <td><a href="@Url.Action("DeleteNotificationInterested", "Users", new {idNotification = item.id_interested })" class="btn btn-danger btn-xs"><i class="fa fa-trash-o">  Apagar</i></a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+

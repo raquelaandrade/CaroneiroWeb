@@ -1,0 +1,16 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<div>
+    <h3>Configurações</h3>
+    <hr />
+    <h4>Você deseja desativar sua conta?</h4>
+    <h5>Sua conta poderá ser reativada a qualquer momento.</h5>
+    <h5>Ao desativar sua conta ela não será mais visível aos demais usuários.</h5>
+    <h5></h5>
+    <br />
+    @Html.ActionLink("Confirmar", "DeactivateAccount", "Settings", new { area = "" }, new { @class = "btn btn-info" })
+    @Html.ActionLink("Cancelar", "Index", "Settings", new { area = "" }, new { @class = "btn btn-default" })
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CaroneiroWeb.Models.Messages>
+
+@{
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+<h3> Caixa de Entrada <i class="fa fa-envelope pull-right"></i></h3>
+<hr />
+<div class="col-xs-12 col-sm-9 col-md-9">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+            <div class="table-responsive">
+                <table>
+                    <tr>
+                        <td width="45"><img src=@item.User.image width="40" height="40"></td>
+                        <td><h6 class="text-info"> Mensagem enviada por @item.User.name_user em @item.date_msg.ToString("dd/MM/yyyy HH:mm") </h6></td>                    
+                    </tr>
+                </table>
+            </div>
+            <div class="panel-body">
+                @Html.DisplayFor(modelItem => item.content)
+                <br />
+                <br />
+            </div>
+            <div class="panel-footer">
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            @if (item.User.active == 0)
+                            {
+                                <td><h5 class="text-success">Este usuário esta desativado. Você não poderá responder.</h5></td>
+                                <td width="9px"></td>
+                                <td><a href="@Url.Action("DeleteMessage", "Users", new { id = item.id_message })" class="btn btn-danger btn-xs"><i class="fa fa-trash-o">  Apagar</i></a></td>
+                            }
+                            else
+                            {
+                                <td><a href="@Url.Action("Message", "People", new { id = item.from_user_id })" class="btn btn-info btn-xs"><i class="fa fa-reply"> Responder</i></a></td>
+                                <td width="9px"></td>
+                                <td><a href="@Url.Action("DeleteMessage", "Users", new { id = item.id_message })" class="btn btn-danger btn-xs"><i class="fa fa-trash-o">  Apagar</i></a></td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
